@@ -39,7 +39,7 @@ namespace HWebAPI.Repository
                 }
                 else
                 {
-                    ServiceResponse.Data = CreateToken(User);
+                    ServiceResponse.Data = await CreateToken(User);
                     ServiceResponse.Success = true;
                     ServiceResponse.Message = "Login is Successfull!";
                 }
@@ -69,13 +69,16 @@ namespace HWebAPI.Repository
             }
         }
 
-        private string CreateToken(UserModel users)
+        private async Task<string> CreateToken(UserModel users)
         {
+            var UserRoles = await _context.UserRoles.FirstAsync(x=>x.UserId == users.Id);
+            var Role = await _context.Roles.FirstAsync(x=>x.Id == UserRoles.RoleId);
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, users.Id),
                 new Claim(ClaimTypes.Name, users.UserName),
-                new Claim(ClaimTypes.Email, users.Email)
+                new Claim(ClaimTypes.Email, users.Email),
+                new Claim(ClaimTypes.Role, Role.Name.ToLower())
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
@@ -86,7 +89,7 @@ namespace HWebAPI.Repository
             var tokendescr = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddDays(1),
+                Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = creds
             };
 
