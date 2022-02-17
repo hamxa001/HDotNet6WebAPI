@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using HWebAPI.DTOs.RolesDTOs;
 using HWebAPI.DTOs.UserDTOs;
 using HWebAPI.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace HWebAPI
 {
@@ -15,6 +17,9 @@ namespace HWebAPI
             .ForMember(x => x.NormalizedEmail, c => c.MapFrom(x => x.NormalizedEmail))
             .ForMember(x => x.PasswordHash, c => c.MapFrom(x => x.PasswordHash))
             .ForMember(x => x.PhoneNumber, c => c.MapFrom(x => x.PhoneNumber)).ReverseMap();
+
+            CreateMap<IdentityRole, AddRolesDto>();
+
         }
     }
 }
