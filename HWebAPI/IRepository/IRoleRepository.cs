@@ -8,5 +8,6 @@ namespace HWebAPI.IRepository
     {
         public Task<ServiceResponse<List<IdentityRole>>> GetAllRoles();
         public Task<ServiceResponse<List<IdentityRole>>> AddRoles(IEnumerable<AddRolesDto> roles);
+        public Task<ServiceResponse<int>> DeleteRole(string rolesId);
     }
 }

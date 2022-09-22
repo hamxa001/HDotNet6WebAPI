@@ -65,5 +65,26 @@ namespace HWebAPI.Repository
             }
             return ServiceResponse;
         }
+
+        public async Task<ServiceResponse<int>> DeleteRole(string rolesId)
+        {
+            var ServiceResponse = new ServiceResponse<int>();
+            try
+            {
+                var deleteRole = await _context.Roles.SingleOrDefaultAsync(x => x.Id == rolesId);
+
+                await _context.Roles.SingleDeleteAsync(deleteRole);
+
+                ServiceResponse.Data = await _context.SaveChangesAsync();
+                ServiceResponse.Success = true;
+                ServiceResponse.Message = "Role Successfully Deleted";
+            }
+            catch (Exception ex)
+            {
+                ServiceResponse.Success = false;
+                ServiceResponse.Message = ex.Message;
+            }
+            return ServiceResponse;
+        }
     }
 }
