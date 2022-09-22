@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32104.313
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWebAPI", "HWebAPI\HWebAPI.csproj", "{6EB8C97F-6D87-41EA-8BB1-B2D2CCDE351A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HWebAPI", "HWebAPI\HWebAPI.csproj", "{6EB8C97F-6D87-41EA-8BB1-B2D2CCDE351A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest_MsTest", "UnitTest_MsTest\UnitTest_MsTest.csproj", "{D088FA94-5D51-45D5-8EB3-DC7647C7932E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6EB8C97F-6D87-41EA-8BB1-B2D2CCDE351A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EB8C97F-6D87-41EA-8BB1-B2D2CCDE351A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EB8C97F-6D87-41EA-8BB1-B2D2CCDE351A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D088FA94-5D51-45D5-8EB3-DC7647C7932E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D088FA94-5D51-45D5-8EB3-DC7647C7932E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D088FA94-5D51-45D5-8EB3-DC7647C7932E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D088FA94-5D51-45D5-8EB3-DC7647C7932E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
