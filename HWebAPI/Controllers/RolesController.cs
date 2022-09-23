@@ -1,4 +1,5 @@
-﻿using HWebAPI.IRepository;
+﻿using HWebAPI.DTOs.RolesDTOs;
+using HWebAPI.IRepository;
 using HWebAPI.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -29,7 +30,31 @@ namespace HWebAPI.Controllers
             {
                 return Ok(result);
             }
-            return Unauthorized(result);
+            return BadRequest(result);
+        }
+
+        [HttpPost("addroles")]
+        [Authorize]
+        public async Task<ActionResult<ServiceResponse<List<IdentityRole>>>> Add(IEnumerable<AddRolesDto> Roles)
+        {
+            var result = await _roles.AddRoles(Roles);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpDelete("deleteroles")]
+        [Authorize]
+        public async Task<ActionResult<ServiceResponse<int>>> Delete(string RoleId)
+        {
+            var result = await _roles.DeleteRole(RoleId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
     }
 }
